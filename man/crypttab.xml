@@ -644,6 +644,15 @@
       </varlistentry>
 
       <varlistentry>
+        <term><option>no-tty=</option></term>
+
+        <listitem><para>Takes a boolean argument, defaults to false. If true, no password will be prompted
+        from tty, but password agent will run.</para>
+
+        <xi:include href="version-info.xml" xpointer="v256"/></listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term><option>verify</option></term>
 
         <listitem><para>If the encryption password is read from console, it has to be entered twice to

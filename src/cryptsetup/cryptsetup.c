@@ -506,6 +506,15 @@ static int parse_one_option(const char *option) {
                 SET_FLAG(arg_ask_password_flags, ASK_PASSWORD_HEADLESS, r);
         } else if (streq(option, "headless"))
                 arg_ask_password_flags |= ASK_PASSWORD_HEADLESS;
+        else if ((val = startswith(option, "no-tty="))) {
+                r = parse_boolean(val);
+                if (r < 0) {
+                        log_warning_errno(r, "Failed to parse %s, ignoring: %m", option);
+                        return 0;
+                }
+                SET_FLAG(arg_ask_password_flags, ASK_PASSWORD_NO_TTY, r);
+        }  else if (streq(option, "no-tty"))
+                arg_ask_password_flags |= ASK_PASSWORD_NO_TTY;
 
         else if ((val = startswith(option, "token-timeout="))) {
 
